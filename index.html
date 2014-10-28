@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Kickstarter</title>
+  <meta name="description" content="Kickstarter">
+  <meta name="author" content="Kelly">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="javascripts/bigSlide.min.js"></script>
+  <script src="javascripts/app.js"></script>
+
+</head>
+
+<body>
+
+	<div id="container" class="wrap"></div>
+
+	<script id="main" type="text/x-handlebars-template">
+
+	<div id="desktop-nav" class="row visible-sm-inline visible-md-inline visible-lg-inline">
+		<div class="col-sm-12 no-pad text-center yellow index-1">
+			<img src="images/logo.gif" class="logo">
+			<ul class="navigation">
+				<li><a href="http://uchastings.edu/about/index.php">About</a></li>
+				<li><a href="http://uchastings.edu/academics/index.php">Academics</a></li>
+				<li><a href="http://uchastings.edu/admissions/index.php">Admissions</a></li>
+				<li><a href="http://uchastings.edu/student-life/index.php">Student Life</a></li>
+				<li><a href="http://uchastings.edu/student-life/index.php">Career Office</a></li>
+				<li><a href="http://uchastings.edu/centers/index.php">Centers</a></li>
+				<li><a href="http://library.uchastings.edu/index.php">Library</a></li>
+				<li><a href="http://uchastings.edu/news/index.php">Newsroom</a></li>
+				<li><a href="http://uchastings.edu/our-alumni/index.php">Our Alumni</a></li>
+			</ul>
+		</div> 	
+	</div>
+	    <!-- Fixed navbar -->
+    <div id="mobile-nav" class="navbar navbar-default navbar-fixed-top hidden-sm hidden-md hidden-lg" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed menu-link">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" class="hidden-sm hidden-xs"><img src="images/logo480.gif"</a>
+        </div>
+
+      </div>
+    </div>
+	
+	<nav id="menu" class="panel" role="navigation">
+	    <ul>
+	        <li><a href="http://uchastings.edu/about/index.php">About</a></li>
+			<li><a href="http://uchastings.edu/academics/index.php">Academics</a></li>
+			<li><a href="http://uchastings.edu/admissions/index.php">Admissions</a></li>
+			<li><a href="http://uchastings.edu/student-life/index.php">Student Life</a></li>
+			<li><a href="http://uchastings.edu/student-life/index.php">Career Office</a></li>
+			<li><a href="http://uchastings.edu/centers/index.php">Centers</a></li>
+			<li><a href="http://library.uchastings.edu/index.php">Library</a></li>
+			<li><a href="http://uchastings.edu/news/index.php">Newsroom</a></li>
+			<li><a href="http://uchastings.edu/our-alumni/index.php">Our Alumni</a></li>
+	    </ul>
+	</nav>
+	<div id="header-img" class="row">
+		<div class="col-xs-12 no-pad">
+			<img src="images/fun.jpg" width="100%">
+		</div>
+	</div>
+	<div class="row white pad-down">
+		<div class="col-xs-12 text-center">
+				<h1>2014 Student Giving Campaign</h1>
+				<p>Hurry...it's not too late to give before school's out!<br/>Gifts of all sizes make a difference! <b>You Choose</b> where your gift goes:</p>
+		</div>
+	</div>
+	  <div class="row">
+	  		{{#each data}}
+	  			<div class="col-xs-offset-1 col-xs-10 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 rounded offset-right">
+	  				<div class="col-xs-12 background section-header rounded" style="background-image: url('images/{{image}}')">
+	  					<h3>{{title}}</h3>
+	  					<div class="progress">
+						  <div class="progress-bar" role="progressbar" aria-valuenow="{{percent}}%" aria-valuemin="0" aria-valuemax="100" style="width: {{percent}}%;">
+						    <span class="sr-only">{{percent}}% Complete</span>
+						  </div>
+						</div><!--end progress bar-->
+						<div class="row goal">
+							<div class="col-xs-4">
+								<h4>{{percent}}% <br/> to goal</h4>
+							</div>
+							<div class="col-xs-4">
+								<h4>${{pledged}} pledged</h4>
+							</div>
+							<div class="col-xs-4">
+								<h4>${{total}} amount</h4>
+							</div>
+						</div><!--end UCH fund row-->
+						<div class="row white-background padding-top">
+							<div class="col-xs-7">
+								<p>
+								  <a href="/campaign.html?id={{_id}}" type="button" class="btn btn-lg btn-custom white">DONATE</a>
+								</p>
+							</div>
+							<div class="col-xs-5 text-right no-white">
+								<h5>{{contributors}} contributors</h5>
+								<p>text</p>
+							</div>
+						</div>
+						<div class="row white-background">
+							<div class="col-sm-4">
+							<img src="images/social.png" width="100px">
+							</div> 
+							<div class="col-sm-4">
+							<img src="images/tweet.jpg" width="150px">
+							</div> 
+							<div class="col-sm-4">
+							</div> 
+						</div>
+	  				</div>
+	  			</div>
+	  		{{/each}}
+	 
+	  </div>
+	  <div class="row black white space">
+		<div class="col-xs-12 col-sm-4 align">
+			<h4>UC Hastings College of the Law</h4>
+			<p>200 McAllister Street, San Francisco, Ca</p>
+			<p>415.565.4615</p>
+			<p>&copy; 2014</p>
+		</div>
+		<div class="col-xs-12 col-sm-4 text-center">
+			<p>text goes here</p>
+		</div>
+		<div class="col-xs-12 col-sm-4 text-center">
+			<ul class="footer">
+				<li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+				<li><a href="#"><i class="fa fa-youtube fa-2x"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+				<li><a href="#"><i class="fa fa-google-plus fa-2x"></i></a></li>
+			</ul>
+		</div>
+	  </div> <!--end div row-->
+	</script>
+	  
+</body>
+</html>
