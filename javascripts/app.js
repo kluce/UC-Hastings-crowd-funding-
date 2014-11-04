@@ -63,6 +63,7 @@ $(document).ready(function() {
 			        for (var i = data.length - 1; i >= 0; i--) {
 			        	data[i].percent = parseInt(data[i].pledged/data[i].total)
 			        };
+					console.log("data");
 					var html = template({data: data});
 					$('#container').html(html);
 					$('.menu-link')
